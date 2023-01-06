@@ -1,11 +1,11 @@
 /**
  * *************************************************************
- * File:	PrintingSystem.java (Class)
- * Author:	Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * File:        PrintingSystem.java (Class)
+ * Author:      Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
  * Contents:    Concurrent Programming Coursework (2022/23)
  * Description: This provides the functions of the printing system. The main class
- * Date:	06-Jan-23
- * Version:	1.0
+ * Date:        06-Jan-23
+ * Version:     1.0
  * *************************************************************
  */
 

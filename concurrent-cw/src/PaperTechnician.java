@@ -1,11 +1,11 @@
 /**
  * *************************************************************
- * File:	PaperTechnician.java (Class)
- * Author:	Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * File:        PaperTechnician.java (Class)
+ * Author:      Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
  * Contents:    Concurrent Programming Coursework (2022/23)
  * Description: This provides the functions of paper technician.
- * Date:	06-Jan-23
- * Version:	1.0
+ * Date:        06-Jan-23
+ * Version:     1.0
  * *************************************************************
  */
 
