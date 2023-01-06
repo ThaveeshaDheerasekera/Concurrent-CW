@@ -1,11 +1,11 @@
 /**
  * *************************************************************
- * File:	    LaserPrinter.java (Class)
- * Author:	    Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * File:        LaserPrinter.java (Class)
+ * Author:      Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
  * Contents:    Concurrent Programming Coursework (2022/23)
  * Description: This provides the functions of printer. (Acts as the thread monitor)
- * Date:	    06-Jan-23
- * Version:	    1.0
+ * Date:        06-Jan-23
+ * Version:     1.0
  * *************************************************************
  */
 
