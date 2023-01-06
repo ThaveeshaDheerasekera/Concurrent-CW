@@ -1,35 +1,53 @@
+/**
+ * *************************************************************
+ * File:	    PrintingSystem.java (Class)
+ * Author:	    Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * Contents:    Concurrent Programming Coursework (2022/23)
+ * Description: This provides the functions of the printing system. The main class
+ * Date:	    06-Jan-23
+ * Version:	    1.0
+ * *************************************************************
+ */
+
 public class PrintingSystem {
-    public static void main(String[] args) {
-        ServicePrinter printer = new LaserPrinter("Ip-CG", 24, 150, 150, 0);
+    public static void main(String[] params) {
+        // Required threads
+        ThreadGroup studentThreads = new ThreadGroup("StudentGroup");
+        ThreadGroup technicianThreads = new ThreadGroup("TechnicianGroup");
 
-        ThreadGroup studentGroup = new ThreadGroup("Student Group");
-        ThreadGroup techniciansGroup = new ThreadGroup("Technicians Group");
+        ServicePrinter printer = new LaserPrinter("Canon imageClass MF756Cx", "printer001", studentThreads);
 
-        Runnable studentRunnable1 = new Student("Thaveesha", studentGroup, printer);
-        Runnable studentRunnable2 = new Student("Sherlock", studentGroup, printer);
-        Runnable studentRunnable3 = new Student("Watson", studentGroup, printer);
-        Runnable studentRunnable4 = new Student("Moriarty", studentGroup, printer);
-        Runnable studentRunnable5 = new Student("Lestrade", studentGroup, printer);
+        // Student threads
+        Student student1 = new Student("James Bond", printer, studentThreads);
+        Student student2 = new Student("Tom Hardy", printer, studentThreads);
+        Student student3 = new Student("Johnny English", printer, studentThreads);
+        Student student4 = new Student("Jack Black", printer, studentThreads);
+        Student student5 = new Student("Tom Sawyer", printer, studentThreads);
 
-        Thread studentThread1 = new Thread(studentGroup, studentRunnable1, "Thaveesha");
-        Thread studentThread2 = new Thread(studentGroup, studentRunnable2, "Sherlock");
-        Thread studentThread3 = new Thread(studentGroup, studentRunnable3, "Watson");
-        Thread studentThread4 = new Thread(studentGroup, studentRunnable4, "Moriarty");
-        Thread studentThread5 = new Thread(studentGroup, studentRunnable5, "Lestrade");
+        // Technician threads
+        PaperTechnician paperTechnician = new PaperTechnician("Jesse Pinkman", printer, technicianThreads);
+        TonerTechnician tonerTechnician = new TonerTechnician("Walter White", printer, technicianThreads);
 
-        Runnable paperTechnician = new PaperTechnician("Kevin", techniciansGroup, printer);
-        Runnable tonerTechnician = new TonerTechnician("Ben", techniciansGroup, printer);
+        // Starting and joining threads
+        student1.start();
+        student2.start();
+        student3.start();
+        student4.start();
+        student5.start();
 
-        Thread paperTechnicianThread = new Thread(techniciansGroup, paperTechnician, "Kevin");
-        Thread tonerTechnicianThread = new Thread(techniciansGroup, tonerTechnician, "Ben");
+        paperTechnician.start();
+        tonerTechnician.start();
 
-        studentThread1.start();
-        studentThread2.start();
-        studentThread3.start();
-        studentThread4.start();
-        studentThread5.start();
-
-        paperTechnicianThread.start();
-        tonerTechnicianThread.start();
+        try {
+            student1.join();
+            student2.join();
+            student3.join();
+            student4.join();
+            student5.join();
+            paperTechnician.join();
+            tonerTechnician.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

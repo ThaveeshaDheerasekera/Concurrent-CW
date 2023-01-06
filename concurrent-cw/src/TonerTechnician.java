@@ -1,30 +1,33 @@
-public class TonerTechnician implements Runnable {
-    private final String name;
-    private final ThreadGroup group;
+/**
+ * *************************************************************
+ * File:	    TonerTechnician.java (Class)
+ * Author:	    Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * Contents:    Concurrent Programming Coursework (2022/23)
+ * Description: This provides the functions of toner technician.
+ * Date:	    06-Jan-23
+ * Version:	    1.0
+ * *************************************************************
+ */
+
+public class TonerTechnician extends Thread {
     private final ServicePrinter printer;
 
-    public TonerTechnician(String name, ThreadGroup group, ServicePrinter printer) {
-        this.name = name;
-        this.group = group;
+    TonerTechnician(String technicianName, ServicePrinter printer, ThreadGroup threadGroup) {
+        super(threadGroup, "Thread:" + technicianName);
         this.printer = printer;
     }
 
     @Override
     public void run() {
-        int count = 0;
         for (int i = 0; i < 3; i++) {
             printer.replaceTonerCartridge();
-
-            if (((LaserPrinter)printer).isTonerReplaced()) {
-                count++;
-            }
-            int num = ((int)(Math.random() * 100 + 1));
             try {
-                Thread.sleep(num);
+                sleep(Utilities.timeRandomizer());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Toner Technician Finished. " + count + " Cartridges Used.");
         }
+
     }
+
 }

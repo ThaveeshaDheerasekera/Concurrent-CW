@@ -1,97 +1,152 @@
+/**
+ * *************************************************************
+ * File:	    LaserPrinter.java (Class)
+ * Author:	    Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+ * Contents:    Concurrent Programming Coursework (2022/23)
+ * Description: This provides the functions of printer. (Acts as the thread monitor)
+ * Date:	    06-Jan-23
+ * Version:	    1.0
+ * *************************************************************
+ */
+
 public class LaserPrinter implements ServicePrinter {
-    private final String name;
-    private final int id;
-    private int currentPaperLevel;
-    private int currentTonerLevel;
-    private int noOfDocumentsPrinted;
-    private boolean paperRefilled = false;
-    private boolean tonerReplaced = false;
+    private final String printerName;   // Name of the printer
+    private final String printerID;     // ID of the printer
+    private int currentPaperLevel = ServicePrinter.Full_Paper_Tray;     // the current paper level
+    private int currentTonerLevel = ServicePrinter.Full_Toner_Level;    // the current toner level
+    private int printedDocuments = 0;    // the number of documents printed
+    private final ThreadGroup students;    // students thread group
 
-    public boolean isPaperRefilled() {
-        return paperRefilled;
-    }
-
-    public boolean isTonerReplaced() {
-        return tonerReplaced;
-    }
-
-    public LaserPrinter(String name, int id, int currentPaperLevel, int currentTonerLevel, int noOfDocumentsPrinted) {
-        this.name = name;
-        this.id = id;
-        this.currentPaperLevel = currentPaperLevel;
-        this.currentTonerLevel = currentTonerLevel;
-        this.noOfDocumentsPrinted = noOfDocumentsPrinted;
+    LaserPrinter(String printerName, String printerID, ThreadGroup students) {
+        this.printerName = printerName;
+        this.printerID = printerID;
+        this.students = students;
     }
 
     @Override
     public synchronized void printDocument(Document document) {
-        while (!(document.getNumberOfPages() <= this.currentPaperLevel && document.getNumberOfPages() <= this.currentTonerLevel)) {
+        message(Utilities.PRINTING_REQUEST_RECEIVED);
+
+        int documentPages = document.getNumberOfPages();
+
+        while (!hasEnoughPaperToners(documentPages)) { // The guarded action
             try {
-                wait(5000);
+                message(Utilities.WAITING_FOR_PRINTING_RESOURCES);
+                wait(); // Insufficient resources. Wait till it's refilled.
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        this.currentPaperLevel -= document.getNumberOfPages();
-        this.currentTonerLevel -= document.getNumberOfPages();
-        this.noOfDocumentsPrinted++;
+
+        message(Utilities.ENOUGH_PRINTING_RESOURCES);
+
+        // Printing
+        currentPaperLevel -= documentPages;
+        currentTonerLevel -= documentPages;
+        printedDocuments += 1;
+
+        message("PRINTING " + document.getUserID() + "'s" + document.getDocumentName() + " of pages " + document.getNumberOfPages() + "...");
+        message(toString());
+        message(Utilities.PRINTING_DOC_DONE);
+
         notifyAll();
     }
 
     @Override
     public synchronized void replaceTonerCartridge() {
-        boolean tried = false;
-        this.tonerReplaced = false;
+        message(Utilities.TONER_REPLACE_REQUEST_RECEIVED);
 
-        while (this.currentTonerLevel > (Minimum_Toner_Level - 1)) {
-            if (tried) {
-                break;
-            }
+        while (hasEnoughToners()) { // can cause deadlock, issue in the logic
             try {
-                wait(5000);
+                if (stillPrinting()) { // Still students are using printer
+                    message(Utilities.WAITING_FOR_TONER_REQUEST);
+                    wait(5000);
+                } else {
+                    // No student waiting. Can stop concurrent loop
+                    message(Utilities.STUDENT_OUT);
+                    break;
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            tried = true;
         }
-        if (this.currentTonerLevel < (Minimum_Toner_Level - 1)) {
-            this.currentTonerLevel = 500;
-            this.tonerReplaced = true;
+
+        if (!hasEnoughToners()) {
+            // toner replace
+            message(Utilities.TONER_REPLACING);
+            currentTonerLevel = ServicePrinter.Full_Toner_Level;
+            System.out.println("Replacing Toner");
+            message(Utilities.TONER_REPLACE_DONE);
         }
+
+        message(Utilities.TONER_REPLACE_REQUEST_PROCESSED);
         notifyAll();
     }
 
     @Override
     public synchronized void refillPaper() {
-        boolean tried = false;
-        this.paperRefilled = false;
+        message(Utilities.PAPER_REPLACE_REQUEST_RECEIVED);
 
-        while (!(this.currentPaperLevel <= (Full_Paper_Tray - 50))) {
-            if (tried) {
-                break;
-            }
+        while (paperWillOverfill()) {
+            // paper overfill
             try {
-                wait(5000);
+                if (stillPrinting()) { // Still student is using printer
+                    message(Utilities.WAITING_FOR_PAPER_REQUEST);
+                    wait(5000);
+                } else {
+                    // No student waiting. Can stop concurrent loop
+                    message(Utilities.STUDENT_OUT);
+                    break;
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            tried = true;
         }
-        if (this.currentPaperLevel <= (Full_Paper_Tray - 50)) {
-            this.currentPaperLevel += 50;
-            this.paperRefilled = true;
+
+        if (!paperWillOverfill()) {
+            // refill
+            message(Utilities.PAPER_REPLACING);
+            currentPaperLevel += ServicePrinter.SheetsPerPack;
+            System.out.println("Replacing Paper");
+            System.out.println(toString());
+            message(Utilities.PAPER_REPLACE_DONE);
         }
+
+        message(Utilities.PAPER_REPLACE_REQUEST_PROCESSED);
         notifyAll();
+    }
+
+    // -------------------- SUPPORT FUNCTIONS -------------------------
+
+    private boolean stillPrinting() {
+        return students.activeCount() > 0;
+    }
+
+    private boolean hasEnoughPaperToners(int documentPages) {
+        return currentPaperLevel >= documentPages || currentTonerLevel >= documentPages;
+    }
+
+    private boolean hasEnoughToners() {
+        return currentTonerLevel > ServicePrinter.Minimum_Toner_Level;
+    }
+
+    private boolean paperWillOverfill() {
+        return currentPaperLevel + ServicePrinter.SheetsPerPack > ServicePrinter.Full_Paper_Tray;
+    }
+
+    private void message(String msg) {
+        System.out.println(msg);
     }
 
     @Override
     public String toString() {
-        //[ Printer ID: lp-CG.24, Paper Level: 35, Toner Level: 310, Documents Printed: 4 ]
-        return "[ " +
-                "Printer ID: " + name + "." + id +
-                ", Paper Level: " + currentPaperLevel +
-                ", Toner Level: " + currentTonerLevel +
-                ", No Of Documents Printed: " + noOfDocumentsPrinted +
-                " ]";
+        return "LaserPrinter{" +
+                "printerName='" + printerName + '\'' +
+                ", printerID='" + printerID + '\'' +
+                ", currentPaperLevel=" + currentPaperLevel +
+                ", currentTonerLevel=" + currentTonerLevel +
+                ", printedDocuments=" + printedDocuments +
+                ", students=" + students +
+                '}';
     }
 }
