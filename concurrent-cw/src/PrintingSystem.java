@@ -2,7 +2,7 @@
  * *************************************************************
  * File:        PrintingSystem.java (Class)
  * Author:      Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
- * Contents:    Concurrent Programming Coursework (2022/23)
+ * Contents:    6SENG006C Concurrent Programming Coursework (2022/23)
  * Description: This provides the functions of the printing system. The main class
  * Date:        06-Jan-23
  * Version:     1.0
@@ -11,6 +11,13 @@
 
 public class PrintingSystem {
     public static void main(String[] params) {
+
+        System.out.println("\n\n----BEGIN------------------------------------------------------------------\n");
+        System.out.println("\t*\tAuthor:\t\tThaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369");
+        System.out.println("\t*\tContent:\t6SENG006C Concurrent Programming Coursework (2022/23)");
+        System.out.println("\t*\tVersion:\t1.0");
+        System.out.println("\n---------------------------------------------------------------------------\n");
+
         // Required threads
         ThreadGroup studentThreads = new ThreadGroup("StudentGroup");
         ThreadGroup technicianThreads = new ThreadGroup("TechnicianGroup");
@@ -49,5 +56,7 @@ public class PrintingSystem {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("\n----END--------------------------------------------------------------------");
     }
 }

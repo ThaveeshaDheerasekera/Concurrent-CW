@@ -2,7 +2,7 @@
  * *************************************************************
  * File:        LaserPrinter.java (Class)
  * Author:      Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
- * Contents:    Concurrent Programming Coursework (2022/23)
+ * Contents:    6SENG006C Concurrent Programming Coursework (2022/23)
  * Description: This provides the functions of printer. (Acts as the thread monitor)
  * Date:        06-Jan-23
  * Version:     1.0
@@ -29,7 +29,7 @@ public class LaserPrinter implements ServicePrinter {
 
         int documentPages = document.getNumberOfPages();
 
-        while (!hasEnoughPaperToners(documentPages)) { // The guarded action
+        while (!hasEnoughPaperOrToner(documentPages)) { // The guarded action
             try {
                 message(Utilities.WAITING_FOR_PRINTING_RESOURCES);
                 wait(); // Insufficient resources. Wait till it's refilled.
@@ -45,7 +45,7 @@ public class LaserPrinter implements ServicePrinter {
         currentTonerLevel -= documentPages;
         printedDocuments += 1;
 
-        message("PRINTING " + document.getUserID() + "'s" + document.getDocumentName() + " of pages " + document.getNumberOfPages() + "...");
+        message("PRINTING " + document.getUserID() + "'s " + document.getDocumentName() + ". Page Count: " + document.getNumberOfPages() + "...");
         message(toString());
         message(Utilities.PRINTING_DOC_DONE);
 
@@ -56,7 +56,7 @@ public class LaserPrinter implements ServicePrinter {
     public synchronized void replaceTonerCartridge() {
         message(Utilities.TONER_REPLACE_REQUEST_RECEIVED);
 
-        while (hasEnoughToners()) { // can cause deadlock, issue in the logic
+        while (hasEnoughToner()) {
             try {
                 if (stillPrinting()) { // Still students are using printer
                     message(Utilities.WAITING_FOR_TONER_REQUEST);
@@ -71,7 +71,7 @@ public class LaserPrinter implements ServicePrinter {
             }
         }
 
-        if (!hasEnoughToners()) {
+        if (!hasEnoughToner()) {
             // toner replace
             message(Utilities.TONER_REPLACING);
             currentTonerLevel = ServicePrinter.Full_Toner_Level;
@@ -108,7 +108,6 @@ public class LaserPrinter implements ServicePrinter {
             message(Utilities.PAPER_REPLACING);
             currentPaperLevel += ServicePrinter.SheetsPerPack;
             System.out.println("Replacing Paper");
-            System.out.println(toString());
             message(Utilities.PAPER_REPLACE_DONE);
         }
 
@@ -122,11 +121,11 @@ public class LaserPrinter implements ServicePrinter {
         return students.activeCount() > 0;
     }
 
-    private boolean hasEnoughPaperToners(int documentPages) {
+    private boolean hasEnoughPaperOrToner(int documentPages) {
         return currentPaperLevel >= documentPages || currentTonerLevel >= documentPages;
     }
 
-    private boolean hasEnoughToners() {
+    private boolean hasEnoughToner() {
         return currentTonerLevel > ServicePrinter.Minimum_Toner_Level;
     }
 
@@ -146,7 +145,7 @@ public class LaserPrinter implements ServicePrinter {
                 ", currentPaperLevel=" + currentPaperLevel +
                 ", currentTonerLevel=" + currentTonerLevel +
                 ", printedDocuments=" + printedDocuments +
-                ", students=" + students +
+                ", students=" + students.getName() +
                 '}';
     }
 }
