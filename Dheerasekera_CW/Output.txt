@@ -1,0 +1,206 @@
+/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=61778:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/thaveesha/IIT/Year 4/ConcurrentProgramming/Concurrent-CW/concurrent-cw/out/production/concurrent-cw PrintingSystem
+
+
+----BEGIN------------------------------------------------------------------
+
+	*	Author:		Thaveesha Dheerasekera; IIT ID: 2019483; UoW ID: w1761369
+	*	Content:	6SENG006C Concurrent Programming Coursework (2022/23)
+	*	Version:	1.0
+
+---------------------------------------------------------------------------
+
+--- PAPER REPLACE REQUEST RECEIVED ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- TONER REPLACE REQUEST RECEIVED ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Jack Black's Document [1]. Page Count: 20...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=230, currentTonerLevel=480, printedDocuments=1, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Hardy's Document [1]. Page Count: 18...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=212, currentTonerLevel=462, printedDocuments=2, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Johnny English's Document [1]. Page Count: 8...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=204, currentTonerLevel=454, printedDocuments=3, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING James Bond's Document [1]. Page Count: 1...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=203, currentTonerLevel=453, printedDocuments=4, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Sawyer's Document [1]. Page Count: 15...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=188, currentTonerLevel=438, printedDocuments=5, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PAPER REPLACING ---
+Replacing Paper
+--- PAPER REPLACE DONE ---
+--- PAPER REPLACE REQUEST PROCESSED ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+TIME: 33
+--- PAPER REPLACE REQUEST RECEIVED ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Sawyer's Document [2]. Page Count: 0...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=238, currentTonerLevel=438, printedDocuments=6, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING James Bond's Document [2]. Page Count: 1...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=237, currentTonerLevel=437, printedDocuments=7, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING James Bond's Document [3]. Page Count: 4...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=233, currentTonerLevel=433, printedDocuments=8, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Hardy's Document [2]. Page Count: 6...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=227, currentTonerLevel=427, printedDocuments=9, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Jack Black's Document [2]. Page Count: 24...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=203, currentTonerLevel=403, printedDocuments=10, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Johnny English's Document [2]. Page Count: 21...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=182, currentTonerLevel=382, printedDocuments=11, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PAPER REPLACING ---
+Replacing Paper
+--- PAPER REPLACE DONE ---
+--- PAPER REPLACE REQUEST PROCESSED ---
+TIME: 143
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING James Bond's Document [4]. Page Count: 14...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=218, currentTonerLevel=368, printedDocuments=12, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PAPER REPLACE REQUEST RECEIVED ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Sawyer's Document [3]. Page Count: 14...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=204, currentTonerLevel=354, printedDocuments=13, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- ENOUGH PAPER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Hardy's Document [3]. Page Count: 8...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=196, currentTonerLevel=346, printedDocuments=14, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PAPER REPLACING ---
+Replacing Paper
+--- PAPER REPLACE DONE ---
+--- PAPER REPLACE REQUEST PROCESSED ---
+TIME: 895
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Hardy's Document [4]. Page Count: 12...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=234, currentTonerLevel=334, printedDocuments=15, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING James Bond's Document [5]. Page Count: 14...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=220, currentTonerLevel=320, printedDocuments=16, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Johnny English's Document [3]. Page Count: 4...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=216, currentTonerLevel=316, printedDocuments=17, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Jack Black's Document [3]. Page Count: 6...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=210, currentTonerLevel=310, printedDocuments=18, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Jack Black's Document [4]. Page Count: 8...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=202, currentTonerLevel=302, printedDocuments=19, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Sawyer's Document [4]. Page Count: 14...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=188, currentTonerLevel=288, printedDocuments=20, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Hardy's Document [5]. Page Count: 18...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=170, currentTonerLevel=270, printedDocuments=21, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Johnny English's Document [4]. Page Count: 6...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=164, currentTonerLevel=264, printedDocuments=22, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Tom Sawyer's Document [5]. Page Count: 18...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=146, currentTonerLevel=246, printedDocuments=23, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Jack Black's Document [5]. Page Count: 19...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=127, currentTonerLevel=227, printedDocuments=24, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- PRINTING REQUEST RECEIVED ---
+--- ENOUGH PRINTING RESOURCES | OUT OF WAIT LOOP ---
+PRINTING Johnny English's Document [5]. Page Count: 20...
+LaserPrinter{printerName='Canon imageClass MF756Cx', printerID='printer001', currentPaperLevel=107, currentTonerLevel=207, printedDocuments=25, students=StudentGroup}
+--- PRINTING DOCUMENTS DONE ---
+--- ENOUGH TONER DETECTED | WAITING FOR A REFILL REQUEST ---
+--- STUDENT OUT ---
+--- TONER REPLACE REQUEST PROCESSED ---
+TIME: 148
+--- TONER REPLACE REQUEST RECEIVED ---
+--- STUDENT OUT ---
+--- TONER REPLACE REQUEST PROCESSED ---
+TIME: 692
+--- TONER REPLACE REQUEST RECEIVED ---
+--- STUDENT OUT ---
+--- TONER REPLACE REQUEST PROCESSED ---
+TIME: 547
+
+----END--------------------------------------------------------------------
+
+Process finished with exit code 0
